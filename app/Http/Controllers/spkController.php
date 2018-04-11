@@ -78,10 +78,18 @@ class spkController extends Controller
     {
         $hookId = $req->hook;
 
+        // $spk = SPK::with('Hooks')->get();
+
         $spk = SPK::with('Hooks')
                   ->whereHas('Hooks', function($q) use ($hookId){
                         $q->where('id', $hookId);
                   })->get();
+        // $hook = $spk->getRelation('Hooks');
+        
+        // dd(get_class_methods($hook));
+        // foreach ($spk as $item) {
+        //     $item->hooks = json_decode($hook->hook_params, true);
+        // }
 
         if (count($spk) == 0){
             return response('Data not found!', 404);

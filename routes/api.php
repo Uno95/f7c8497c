@@ -66,7 +66,7 @@ $rotuesEntityData = function () {
 $rotuesCollectionData = function () {
     Route::get('/spk', 'spkController@fetchAll');
     Route::post('/spk', 'spkController@searchByDate');
-    Route::get('/spk/fillter', 'spkController@filterByHook');
+    Route::get('/spk/filter', 'spkController@filterByHook');
     Route::get('/detail-spk', 'itemWasteController@fetchAllWaste');
     Route::get('/detail-spk/{id}', 'itemWasteController@fetchWaste');
     Route::get('/detail-spk/{id}/filter', 'itemWasteController@filterByCategory');

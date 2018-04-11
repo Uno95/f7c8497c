@@ -25,9 +25,6 @@ class orderController extends Controller
 
         foreach ($getModel as $get) {
             $get->status = json_decode($get->status, true);
-            foreach ($get->ConsumenOrder as $order) {
-                $order->hook->hook_params= json_decode($order->hook->hook_params, true);
-            }
         }
     
 

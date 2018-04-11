@@ -11,7 +11,11 @@ class SPK extends Model
     protected $fillable = ['spk_num', 'hooks', 'qty', 'persentase_progress'];
 
     public function Hooks(){
-        return $this->hasOne('App\Hooks', 'id', 'hooks');
+        // return $this->hasOne('App\Hooks', 'id', 'hooks');
+        return $this->hasOne(Hooks::class, 'id', 'hooks')
+            ->withDefault(function () {
+            return new Hooks();
+        });
     }
     
     public function WasteProgress(){

@@ -11,9 +11,6 @@ class hooksController extends Controller
     public function fetchAll()
     {
         $hooks = Hooks::orderBy('id', 'DESC')->get();
-        foreach ($hooks as $hook) {
-            $hook->hook_params = json_decode($hook->hook_params, true);
-        }
         return response($hooks, 200);
     }
 
@@ -23,7 +20,6 @@ class hooksController extends Controller
         if (count($hook) == 0){
             return response("Data not found!", 404);
         }
-        $hook[0]->hook_params = json_decode($hook[0]->hook_params, true);
         return response($hook, 200);
     }
     

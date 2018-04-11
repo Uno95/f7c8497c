@@ -11,8 +11,16 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.dashboard');
+});
+
+Route::get('/users', function () {
+    return view('admin.UserList');
 });
 
 Auth::routes();

@@ -26,3 +26,6 @@ Route::get('/users', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/view-table', 'ExportController@viewTable');
+Route::get('/export', 'ExportController@export');

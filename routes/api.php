@@ -71,7 +71,7 @@ $rotuesCollectionData = function () {
     Route::get('/detail-spk/{id}', 'itemWasteController@fetchWaste');
     Route::get('/detail-spk/{id}/filter', 'itemWasteController@filterByCategory');
     
-    Route::get('/hook', 'hooksController@fetchAll');
+    Route::get('/hooks/{vendor?}', 'hooksController@fetchAll');
     
     Route::get('/order/{status?}', 'orderController@fetchAll');
     Route::post('/order', 'orderController@create');

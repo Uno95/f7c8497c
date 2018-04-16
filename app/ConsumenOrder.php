@@ -17,7 +17,7 @@ class ConsumenOrder extends Model
     // }
 
     public function Hook(){
-        return $this->hasOne(Hooks::class, 'id')
+        return $this->hasOne(Hooks::class, 'id', 'hooks_id')
             ->withDefault(function () {
             return new Hooks();
         });

@@ -10,6 +10,7 @@ add-role
 
 @section('content')
 <div class="col-md-12">
+    @foreach ($roles as $role)
     <div class="col-md-3">
         <div class="itemRole">
             <a href="/add-permission" id="btnAddPermission" data-toggle="tooltip" 
@@ -19,11 +20,20 @@ add-role
             <a href="#" id="btnDltItem" data-toggle="tooltip" data-placement="top" title="Hapus">
                 <span class="glyphicon glyphicon-trash"></span>
             </a>
-            <h4>Admin</h4>
+            <h4>{{ $role->display_name }}</h4>
             <div class="permission">
-                <span class="label label-warning">Create User</span>
+                @if (count($role->permissions) > 0)
+                <span class="label label-info">
+                    @foreach ($role->permissions as $permission)
+                    {{ $permission->display_name }}
+                    @endforeach
+                </span>
+                @else
+                <span class="label label-warning">Not Have Permission</span>
+                @endif
             </div>  
         </div>
     </div>
+    @endforeach
 </div>
 @stop

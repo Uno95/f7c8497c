@@ -31,9 +31,9 @@ Route::get('/add-permission', function () {
     return view('admin.CreatePermission');
 });
 
-Route::get('/user-roles', function () {
-    return view('admin.UserRoleList');
-});
+Route::get('/users', 'UserController@users');
+
+Route::get('/user-roles', 'UserController@roles');
 
 Auth::routes();
 

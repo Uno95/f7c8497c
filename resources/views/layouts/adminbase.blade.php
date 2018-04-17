@@ -19,5 +19,11 @@
 
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('/bootstrap/js/bootstrap.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+        });
+    </script>
 </body>
 </html>

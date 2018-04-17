@@ -1,27 +1,27 @@
 @extends('layouts.adminbase')
 
 @section('specialLinkName')
-Tambah Pengguna
+Tambah Hak Akses
 @stop
 
 @section('specialLinkUrl')
-add-user
+add-role
 @stop
 
 @section('content')
 <div class="col-md-12">
     <div class="col-md-3">
         <div class="itemRole">
-            <a href="/edit-user" id="btnEditItem" data-toggle="tooltip" 
-                data-placement="top" title="Edit Pengguna">
+            <a href="/add-permission" id="btnAddPermission" data-toggle="tooltip" 
+                data-placement="top" title="Tambah Permission">
                 <span class="glyphicon glyphicon-edit"></span>
             </a>
-            <a href="/dlt-user" id="btnDltItem" data-toggle="tooltip" data-placement="top" title="Hapus Pengguna">
+            <a href="#" id="btnDltItem" data-toggle="tooltip" data-placement="top" title="Hapus">
                 <span class="glyphicon glyphicon-trash"></span>
             </a>
-            <h4>Adrian</h4>
+            <h4>Admin</h4>
             <div class="permission">
-                <span class="label label-info">Admin</span>
+                <span class="label label-warning">Create User</span>
             </div>  
         </div>
     </div>

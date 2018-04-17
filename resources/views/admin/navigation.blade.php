@@ -8,22 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="/">Wasteapp Panel</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="/@yield('specialLinkUrl')">@yield('specialLinkName')</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manajemen User & Hak Akses <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User & Hak Akses <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Daftar User</a></li>
-            <li><a href="#">Daftar Hak Akses</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Tambah User Baru</a></li>
-            <li><a href="#">Tambah Hak Akses User</a></li>
-            <li><a href="#">Tambah Hak Akses Baru</a></li>
+            <li><a href="/users">Daftar User</a></li>
+            <li><a href="/user-roles">Daftar Hak Akses</a></li>
           </ul>
         </li>
       </ul>

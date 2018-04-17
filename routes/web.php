@@ -23,6 +23,18 @@ Route::get('/users', function () {
     return view('admin.UserList');
 });
 
+Route::get('/add-user', function () {
+    return view('admin.CreateNewUser');
+});
+
+Route::get('/add-permission', function () {
+    return view('admin.CreatePermission');
+});
+
+Route::get('/user-roles', function () {
+    return view('admin.UserRoleList');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

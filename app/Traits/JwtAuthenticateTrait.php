@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Traits;
 
 use App\Permission;
 use App\Role;
@@ -14,9 +14,8 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Log;
 
-class JwtAuthenticateController extends Controller
+trait JwtAuthenticateTrait
 {
-
     public function index()
     {
         return response()->json(['auth'=>Auth::user(), 'users'=>User::all()]);

@@ -5,37 +5,45 @@
 <div class="col-md-8">
     <div class="whiteCover newPermission">
         <h2>Tambahkan Pengguna Baru</h2>
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="{{ route('register') }}" method="POST">
+            {{ csrf_field() }}
             <div class="form-group">
-                <label for="newPermissionName" class="col-sm-2 control-label">Name</label>
+                <label for="name" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                <input type="text" name="newPermissionName" class="form-control" 
-                    id="newPermissionName" placeholder="Ex: create-post">
+                <input type="text" name="name" class="form-control" 
+                    id="name" placeholder="Ex: create-post">
                 </div>
             </div>
             <div class="form-group">
-                <label for="permissionLabel" class="col-sm-2 control-label">Email</label>
+                <label for="email" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                <input type="email" name="permissionLabel" class="form-control" 
-                    id="permissionLabel" placeholder="Create Post">
+                <input type="email" name="email" class="form-control" 
+                    id="email" placeholder="Create Post">
                 </div>
             </div>
             <div class="form-group">
-                <label for="permissionName" class="col-sm-2 control-label">Hak Akses</label>
-                <div class="col-sm-10" id="permissionName" name="permissionName">
-                    <select class="form-control">
-                        <option>Admin</option>
-                        <option>Manajemen</option>
-                        <option>Produksi</option>
-                        <option>Marketing</option>
-                        <option>Gudang</option>
+                <label for="role" class="col-sm-2 control-label">Hak Akses</label>
+                <div class="col-sm-10" id="role">
+                    <select class="form-control" name="role">
+                        <option value="admin">Admin</option>
+                        <option value="admin">Manajemen</option>
+                        <option value="admin">Produksi</option>
+                        <option value="admin">Marketing</option>
+                        <option value="admin">Gudang</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Password</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="description"></textarea>
+                    <input id="password" type="password" class="form-control" name="password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Konfirmasi Password</label>
+                <div class="col-sm-10">
+                    <input id="password-confirm" type="password" 
+                        class="form-control" name="password_confirmation" required>
                 </div>
             </div>
             <div class="form-group">

@@ -84,22 +84,27 @@ class orderController extends Controller
         if(request()->wantsJson()){
             return response("Order saved successfully!", 201);
         }
-        return redirect('/order');
+        // return redirect('/order');
     }
 
     public function reOrder(Request $req, $id)
     {
         $jlhOrder = $req->order;
-        $item = ConsumenOrder::where('hooks_id', $req->hooksId)->get();
+        $item = ConsumenOrder::where([
+            'order_parent_id' => $id,
+            'hooks_id' => $req->hooksId
+        ])->get();
         if(count($item) > 0){
             $orderQtyOld  = $item[0]->order_qty ;
             $orderLeftOld = $item[0]->order_left;
-            $item = ConsumenOrder::where('hooks_id', $req->hooksId)
-                  ->update([
-                      'order_qty' => $orderQtyOld + $jlhOrder,
-                      'order_left' => $orderLeftOld + $jlhOrder,
-                  ]);
-            if ($item->save()) {
+            $item = ConsumenOrder::where([
+                        'order_parent_id' => $id,
+                        'hooks_id' => $req->hooksId
+                    ])->update([
+                        'order_qty' => $orderQtyOld + $jlhOrder,
+                        'order_left' => $orderLeftOld + $jlhOrder,
+                    ]);
+            if ($item == 1) {
                 return response("Update Success", 200);
             }
         } else {
@@ -119,8 +124,12 @@ class orderController extends Controller
 
     public function closeOrder($id)
     {
-        $getModel = ConsumenOrder::where('id', $id)
-                    ->update(['status' => 'Close']);
+        $status = [
+            "transactionStatus" => "Closed"
+        ];
+        
+        $getModel = itemOrder::where('id', $id)
+                    ->update(['status' => json_encode($status, true)]);
 
         if($getModel){
             return response($getModel, 200);
@@ -134,7 +143,7 @@ class orderController extends Controller
 
     public function delete($id)
     {
-        $getModel = ConsumenOrder::where('id', $id);
+        $getModel = ItemOrder::where('id', $id);
         $order    = $getModel->get();
 
         if (count($order) == 0){
@@ -145,7 +154,7 @@ class orderController extends Controller
         if(request()->wantsJson()){
             return response("No Content", 204);
         }
-        return redirect('/order');
+        // return redirect('/order');
     }
 
     public function orderApproval(Request $req, $id)

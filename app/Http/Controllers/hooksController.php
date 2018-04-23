@@ -8,9 +8,13 @@ use App\Hooks as Hooks;
 
 class hooksController extends Controller
 {
-    public function fetchAll($vendor = null)
+    public function fetchAll($group = null)
     {
-        $hooks = Hooks::orderBy('id', 'DESC')->get();
+        $hooks = Hooks::select('hook_params')->orderBy('id', 'DESC')->get();
+        if (! is_null($group)) {
+            $hooks = $hooks->unique('hook_params.'.$group);
+        }
+
         return response($hooks, 200);
     }
 

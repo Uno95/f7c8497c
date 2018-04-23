@@ -36,8 +36,12 @@ class JwtAuthenticateController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
+        $user = JWTAuth::toUser($token);
+        $userRoleObj = $user->roles()->select('name')->get();
+        $userRole = $userRoleObj[0]->name;
+
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
+        return response()->json(["token" => $token, "role" => $userRole]);
     }
 
     public function createRole(Request $request = null, array $data = null){

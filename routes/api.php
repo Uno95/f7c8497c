@@ -46,11 +46,12 @@ $rotuesEntityData = function () {
     Route::put('/order/approval/{id}', 'orderController@orderApproval');
 
     
-    Route::get('/delivery/{id}', 'deliveryController@fetch');
-    Route::put('/delivery/repeat/{id}', 'deliveryController@redelivery');
-    Route::put('/delivery/close/{id}', 'deliveryController@closedelivery');
-    Route::delete('/delivery/{id}', 'deliveryController@delete');
-    Route::put('/delivery/approval/{id}', 'deliveryController@deliveryApproval');
+    Route::get('/delivery/{id}', 'DeliveryController@fetch');
+    Route::put('/delivery/repeat/{id}', 'DeliveryController@delivery');
+    Route::put('/delivery/{id}', 'DeliveryController@delivery');    
+    Route::put('/delivery/close/{id}', 'DeliveryController@closedelivery');
+    Route::delete('/delivery/{id}', 'DeliveryController@delete');
+    Route::put('/delivery/approval/{id}', 'DeliveryController@deliveryApproval');
 
     
     Route::get('/hook/{id}', 'hooksController@fetch');
@@ -75,6 +76,8 @@ $rotuesCollectionData = function () {
     
     Route::get('/order/{status?}', 'orderController@fetchAll');
     Route::post('/order', 'orderController@create');
+    
+    Route::get('/delivery/{status?}', 'DeliveryController@fetchAll');
 };
 
 Route::middleware(['ability:admin,create-users'])->prefix('collection')->group($rotuesCollectionData);

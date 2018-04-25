@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ConsumenOrder as ConsumenOrder;
 use App\ItemOrder as ItemOrder;
+use App\ItemDelivery as ItemDelivery;
 
 class orderController extends Controller
 {
@@ -94,6 +95,7 @@ class orderController extends Controller
             'order_parent_id' => $id,
             'hooks_id' => $req->hooksId
         ])->get();
+        dd($item);
         if(count($item) > 0){
             $orderQtyOld  = $item[0]->order_qty ;
             $orderLeftOld = $item[0]->order_left;
@@ -108,12 +110,7 @@ class orderController extends Controller
                 return response("Update Success", 200);
             }
         } else {
-            $item  = new ConsumenOrder;
-            $item->order_qty  = $req->order;
-            $item->order_left = $req->order;
-            $item->hooks_id   = $req->hooksId;
-            $item->order_parent_id = $id;
-            $item->save();
+            return response("Item order not found", 404);
         }
         
         if (request()->wantsJson()){

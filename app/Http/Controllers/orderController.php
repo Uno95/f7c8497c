@@ -95,7 +95,7 @@ class orderController extends Controller
             'order_parent_id' => $id,
             'hooks_id' => $req->hooksId
         ])->get();
-        dd($item);
+        
         if(count($item) > 0){
             $orderQtyOld  = $item[0]->order_qty ;
             $orderLeftOld = $item[0]->order_left;

@@ -10,9 +10,13 @@ class hooksController extends Controller
 {
     public function fetchAll($group = null)
     {
-        $hooks = Hooks::select('hook_params')->orderBy('id', 'DESC')->get();
-        if (! is_null($group)) {
+        $hooks = Hooks::orderBy('id', 'DESC')->get();
+        if (! is_null($group) && $group == "hook_vendor") {
             $hooks = $hooks->unique('hook_params.'.$group);
+        }
+
+        if ($group == "hook_type") {
+            $hooks = $hooks->groupBy('hook_params.hook_vendor');
         }
 
         return response($hooks, 200);
